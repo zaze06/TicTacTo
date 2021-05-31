@@ -4,4 +4,4 @@ Hi  i made Tic Tac To for the command line some time ago it tock me ca 6 moth in
 things to do
 - add lan multiplayer
 - add computer player
-- 
+- add Pattern baset mode for computer
