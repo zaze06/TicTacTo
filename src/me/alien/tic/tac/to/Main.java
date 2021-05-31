@@ -20,6 +20,7 @@ public class Main extends JFrame {
         setLocationRelativeTo(null);
         setMaximumSize(getSize());
         setMaximumSize(getSize());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args){

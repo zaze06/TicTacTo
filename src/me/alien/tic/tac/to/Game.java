@@ -80,8 +80,8 @@ public class Game extends JPanel implements ActionListener, MouseListener {
                     if(!win) {
                         if (map[x][y] == 0) {
                             map[x][y] = turn;
-                            if (turn == 1) turn = 2;
-                            else if (turn == 2) turn = 1;
+                            //if (turn == 1) turn = 2;
+                            //else if (turn == 2) turn = 1;
                         }
                     }
                 }
@@ -118,7 +118,7 @@ public class Game extends JPanel implements ActionListener, MouseListener {
             winer = p;
             return true;
         }else if(map[0][1] == p && map[1][1] == p && map[2][1] == p){
-            g2d.drawLine(cels[0][1].getW()/2, cels[0][1].getStart().getY(), cels[2][1].getW()/2, cels[2][1].getEnd().getY());
+            g2d.drawLine(cels[1][0].getW()/2, cels[1][0].getStart().getY(), cels[1][2].getW()/2, cels[1][2].getEnd().getY());
             winer = p;
             return true;
         }else if(map[0][2] == p && map[1][2] == p && map[2][2] == p){
@@ -142,7 +142,7 @@ public class Game extends JPanel implements ActionListener, MouseListener {
             winer = p;
             return true;
         }else if(map[0][2] == p && map[1][1] == p && map[2][0] == p){
-            g2d.drawLine(cels[0][2].getStart().getX(), cels[0][2].getStart().getY(), cels[2][0].getEnd().getX(), cels[2][0].getEnd().getY());
+            g2d.drawLine(cels[0][2].getEnd().getX(), cels[0][2].getStart().getY(), cels[2][0].getStart().getX(), cels[2][0].getEnd().getY());
             winer = p;
             return true;
         }
@@ -162,6 +162,19 @@ public class Game extends JPanel implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if(e.getButton() == MouseEvent.BUTTON2){
+            System.out.println("Button 2");
+            if(win){
+                win = false;
+                winer = 0;
+                map = new int[][]{
+                        {0,0,0},
+                        {0,0,0},
+                        {0,0,0}
+                };
+                return;
+            }
+        }
         mousePosition = new Vector2(e.getX(), e.getY());
     }
 
