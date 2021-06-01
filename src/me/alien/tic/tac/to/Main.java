@@ -18,8 +18,8 @@ public class Main extends JFrame {
         setTitle("Tic Tac To");
         setSize(width, hight);
         setLocationRelativeTo(null);
-        setMaximumSize(getSize());
-        setMaximumSize(getSize());
+        //setMaximumSize(getSize());
+        //setMaximumSize(getSize());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

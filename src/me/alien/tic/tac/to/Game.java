@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Rectangle2D;
 
 public class Game extends JPanel implements ActionListener, MouseListener {
 
@@ -44,13 +45,13 @@ public class Game extends JPanel implements ActionListener, MouseListener {
         int h = getHeight();
         int w = getWidth();
 
-        if(cels == null){
+        //if(cels == null){
             cels = new Box[][]{
                     {new Box(new Vector2(0,0), new Vector2(w/3, h/3)), new Box(new Vector2(w/3, 0), new Vector2(w-(w/3),h/3)), new Box(new Vector2(w-(w/3),0), new Vector2(w, h/3))},
                     {new Box(new Vector2(0,h/3), new Vector2(w/3, h-(h/3))), new Box(new Vector2(w/3, h/3), new Vector2(w-(w/3),h-(h/3))), new Box(new Vector2(w-(w/3),h/3), new Vector2(w, h-(h/3)))},
                     {new Box(new Vector2(0,h-(h/3)), new Vector2(w/3, h)), new Box(new Vector2(w/3, h-(h/3)), new Vector2(w-(w/3),h)), new Box(new Vector2(w-(w/3),h-(h/3)), new Vector2(w, h))}
             };
-        }
+        //}
 
         Graphics2D g2d = (Graphics2D) g;
 
@@ -81,8 +82,8 @@ public class Game extends JPanel implements ActionListener, MouseListener {
                     if(!win) {
                         if (map[x][y] == 0) {
                             map[x][y] = turn;
-                            //if (turn == 1) turn = 2;
-                            //else if (turn == 2) turn = 1;
+                            if (turn == 1) turn = 2;
+                            else if (turn == 2) turn = 1;
                         }
                     }
                 }
@@ -97,7 +98,12 @@ public class Game extends JPanel implements ActionListener, MouseListener {
 
         doWinChenk(g2d);
         if(win){
-            g2d.drawString(winer+" Won", cels[1][1].getStart().getX(), cels[1][1].getH()/2);
+            Rectangle2D r = g2d.getFontMetrics().getStringBounds((winer+" Won"), g2d);
+            g2d.setColor(Color.BLUE);
+            g2d.draw(r);
+            g2d.setColor(Color.RED);
+            g2d.drawString(winer+" Won", (int)(cels[1][1].getStart().getX()+cels[1][1].getW()/2-r.getWidth()/2), (int)(cels[1][1].getStart().getY()+cels[1][1].getH()/2+r.getHeight()/2));
+
         }
     }
 
