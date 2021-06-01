@@ -77,6 +77,7 @@ public class Game extends JPanel implements ActionListener, MouseListener {
                 Box cel = cels[x][y];
                 if(cel.contains(mousePosition)){
                     System.out.println("mouse relese pos ("+mousePosition.getX()+","+mousePosition.getY()+") inside of cel ("+x+","+y+")");
+                    System.out.println("Cel location start ("+cel.getStart().getX()+","+cel.getStart().getY()+"), end ("+cel.getEnd().getX()+","+cel.getEnd().getY()+")");
                     if(!win) {
                         if (map[x][y] == 0) {
                             map[x][y] = turn;
